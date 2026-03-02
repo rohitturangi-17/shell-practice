@@ -1,3 +1,7 @@
 #!/bin/bash
 
-echo "hi man"
+echo "enter pin number::"
+
+read -s PIN
+
+echo "your pin number: $PIN"
