@@ -1,7 +1,7 @@
 #! bin/bash
 
 number1=20
-number2=20
+number2=2
 
 
 if [ $number1 -eq $number2 ]
