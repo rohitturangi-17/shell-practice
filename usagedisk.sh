@@ -19,7 +19,7 @@ do
 
     if [ "$USAGE" -ge "$DISK_THRESHOLD" ]
     then 
-        MSG+="$R Disk Usage exceeded on $FILESYSTEM ($PARTITION): $USAGE% $N\n"
+        MSG+="$Y Disk Usage exceeded on $N $R $FILESYSTEM ($PARTITION): $USAGE% $N\n"
     fi
 done < <(df -hT | awk 'NR>1')
 
