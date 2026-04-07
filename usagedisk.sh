@@ -10,10 +10,9 @@ MSG=""
 
 IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 
-# Use process substitution instead of pipe (fix subshell issue)
 while IFS= read -r line
 do
-    USAGE=$(echo "$line" | awk '{print $6}' | cut -d "%" -f1)
+    USAGE=$(echo "$line" | awk '{print $6}' | tr -d '%')
     PARTITION=$(echo "$line" | awk '{print $7}')
     FILESYSTEM=$(echo "$line" | awk '{print $1}')
 
@@ -23,10 +22,8 @@ do
     fi
 done < <(df -hT | awk 'NR>1')
 
-# Print message
 echo -e "$MSG"
 
-# Send email ONLY if alert exists
 if [ -n "$MSG" ]
 then
     echo -e "$MSG" | mail -s "Disk Alert - $IP" rohitkumarturangi17@gmail.com
