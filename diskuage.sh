@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
-DISK_THRESHOLD=75 # in project it will be 75
+DISK_THRESHOLD=2 # in project it will be 75
 MSG=""
 IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
