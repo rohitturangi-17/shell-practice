@@ -17,13 +17,15 @@ do
     USAGE=$(echo "$line" | awk '{print $6}' | cut -d "%" -f1)
     PARTITION=$(echo "$line" | awk '{print $7}')
     FILESYSTEM=$(echo "$line" | awk '{print $1}')
+    EMAIL=$(echo -e "$MSG" | mail -s "Disk Alert - $IP" rohitkumarturangi17@gmail.com)
 
     if [ "$USAGE" -ge "$DISK_THRESHOLD" ]
     then 
         MSG+="$R Disk Usage exceeded on $FILESYSTEM ($PARTITION): $USAGE% $N\n"
-        echo -e "$MSG" | mail -s "Disk Alert - $IP" rohitkumarturangi17@gmail.com
     fi
 done
 
 # Print message
 echo -e "$MSG"
+echo -e "$EMAIL"
+
