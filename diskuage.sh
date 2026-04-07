@@ -15,6 +15,7 @@ do
         #MSG+="High Disk Usage on $PARTITION: $USAGE % <br>" #<br> represents HTML new
         MSG+="High Disk Usage on $PARTITION: $USAGE % \n"
         echo "Listed tmps : $TMPFS"
+        exit 1
     fi
 done <<< $DISK_USAGE
 
